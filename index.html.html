@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ISE2025 Budget Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    canvas {
+      max-width: 800px;
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ISE 2025 Budget Phasing Dashboard</h1>
+
+  <canvas id="phasingChart"></canvas>
+  <canvas id="monthlyChart"></canvas>
+
+  <script>
+    const phaseData = {
+      labels: ["Q1 2024", "Q3 2024", "Q4 2024", "Q1 2025"],
+      datasets: [{
+        label: 'Payment Distribution (€)',
+        data: [8048 + 0, 20120 + 0, 12072 + 47160 + 3200 + 350 + 455 + 1489.28 + 709.22 + 3868.81 + 1640, 47160 + 320 + 1850 + 400 + 3200 + 1350 + 6402 + 459.80 + 6075 + 3991.68 + 93.60 + 821.70 + 46.80 + 395 + 4399.24 + 350 + 40 + 5970 + 487.95 + 1540 + 900 + 1446.90 + 1436.78 + 3728 + 425.95 + 360 + 1803 + 96.80 + 1258.70 + 379 + 161.34 + 1300],
+        backgroundColor: 'rgba(75, 192, 192, 0.7)'
+      }]
+    };
+
+    const monthData = {
+      labels: ["March", "July", "October", "November", "December", "January", "February"],
+      datasets: [{
+        label: 'Monthly Payment Total (€)',
+        data: [8048 + 6075, 20120, 12072 + 47160 + 3200, 350 + 455 + 2500 + 999, 1489.28 + 709.22 + 3868.81 + 1640 + 2975 + 1266.50 + 698, 3200 + 1350 + 6402 + 3991.68 + 93.60 + 821.70 + 46.80 + 395 + 4399.24 + 350 + 5970 + 1540 + 900 + 1436.78 + 3728 + 425.95 + 360 + 1803 + 96.80 + 1258.70 + 379 + 161.34 + 1300, 47160 + 459.80 + 40 + 487.95 + 1446.90],
+        backgroundColor: 'rgba(153, 102, 255, 0.7)'
+      }]
+    };
+
+    new Chart(document.getElementById('phasingChart'), {
+      type: 'bar',
+      data: phaseData,
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Budget by Quarter'
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('monthlyChart'), {
+      type: 'bar',
+      data: monthData,
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Budget by Month'
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
